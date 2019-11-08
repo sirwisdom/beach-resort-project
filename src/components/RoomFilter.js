@@ -25,12 +25,21 @@ export default function RoomFilter({ rooms }) {
   let types = getUniqueValue(rooms, "type");
 
   // add all
-
+  types = ["all", ...types];
   // map to jsx
   types = types.map((item, index) => {
     return (
       <option value={item} key={index}>
         {" "}
+        {item}
+      </option>
+    );
+  });
+
+  let people = getUniqueValue(rooms, "capacity");
+  people = people.map((item, index) => {
+    return (
+      <option key={index} value={item}>
         {item}
       </option>
     );
@@ -53,8 +62,90 @@ export default function RoomFilter({ rooms }) {
             {types}{" "}
           </select>
         </div>
-
         {/* End of  Select Type */}
+        {/* Guest Type */}
+        <div className="form-group">
+          <label htmlFor="capacity">Guest</label>
+          <select
+            name="capacity"
+            id="capacity"
+            value={capacity}
+            className="form-control"
+            onChange={handleChange}
+          >
+            {" "}
+            {people}{" "}
+          </select>
+        </div>
+        {/* End of  Select Type */}
+
+        {/* Room Price */}
+        <div className="form-group">
+          <label htmlFor="price">Room Price ${price}</label>
+          <input
+            type="range"
+            name="price"
+            id="price"
+            min={minPrice}
+            max={maxPrice}
+            value={price}
+            onChange={handleChange}
+            className="form-control"
+          />
+        </div>
+
+        {/* End of  Room Price */}
+
+        {/*  Room Size */}
+        <div className="form-group">
+          <label htmlFor="size">Room Size</label>
+          <div className="size-inputs">
+            <input
+              type="number"
+              name="minSize"
+              id="size"
+              value={minSize}
+              onChange={handleChange}
+              className="size-input"
+            />
+            <input
+              type="number"
+              name="maxSize"
+              id="size"
+              value={maxSize}
+              onChange={handleChange}
+              className="size-input"
+            />
+          </div>
+        </div>
+
+        {/* End of  Room Size */}
+
+        {/* Extras */}
+        <div className="form-group">
+          <div className="single-extra">
+            <input
+              type="checkbox"
+              name="breakfast"
+              id="breakfast"
+              value={breakfast}
+              onChange={handleChange}
+            />
+            <label htmlFor="breakfast">Breakfast</label>
+          </div>
+          <div className="single-extra">
+            <input
+              type="checkbox"
+              name="pets"
+              id="pets"
+              value={pets}
+              onChange={handleChange}
+            />
+            <label htmlFor="pets">pets</label>
+          </div>
+        </div>
+
+        {/* End of  Extras */}
       </form>
     </section>
   );

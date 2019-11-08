@@ -1,9 +1,9 @@
 import React from "react";
-import LoadingIcon from "../images/gif/loading-gear.gif";
+import LoadingIcon from "../images/gif/loading-arrow.gif";
 export default function Loading() {
   return (
-    <div>
-      <img href={LoadingIcon} alt="loading..." />
+    <div className="loading-div">
+      <img src={LoadingIcon} alt="loading..." className="loading" />
     </div>
   );
 }
